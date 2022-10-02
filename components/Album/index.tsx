@@ -6,13 +6,13 @@ type Props = {
 	album: Album;
 };
 
-const AlbumComponent = ({ album: { id, imageUri, artistHeadline } }: Props) => {
+const AlbumComponent = ({
+	album: { id, imageUri, artistsHeadline },
+}: Props) => {
 	return (
 		<View style={styles.container}>
 			<Image source={{ uri: imageUri }} style={styles.image} />
-			<Text style={styles.text}>{artistHeadline}</Text>
-			{/* album image */}
-			{/* artist headline */}
+			<Text style={styles.text}>{artistsHeadline}</Text>
 		</View>
 	);
 };
