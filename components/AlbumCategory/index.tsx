@@ -5,7 +5,7 @@ import AlbumComponent from "../Album";
 
 type Props = {
 	title: string;
-	albums: [Album];
+	albums: Album[];
 };
 
 const AlbumCategory = ({ title, albums }: Props) => {
