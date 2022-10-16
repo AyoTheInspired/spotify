@@ -6,4 +6,5 @@ interface Album {
 
 interface HomeScreenParamsList {
 	HomeScreen: undefined;
+	AlbumScreen: undefined;
 }
