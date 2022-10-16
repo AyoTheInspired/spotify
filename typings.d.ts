@@ -8,3 +8,10 @@ interface HomeScreenParamsList {
 	HomeScreen: undefined;
 	AlbumScreen: undefined;
 }
+
+interface Song {
+	id: string;
+	imageUri: string;
+	title: string;
+	artist: string;
+}

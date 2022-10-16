@@ -1,6 +1,8 @@
-import { StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
 import React, { useEffect } from "react";
 import { useRoute } from "@react-navigation/native";
+import SongListItem from "../components/SongListItem";
+import { albumDetails } from "../assets/data/albumDetails";
 
 type Props = {};
 
@@ -11,46 +13,13 @@ const AlbumScreen = (props: Props) => {
 		console.log(route);
 	}, []);
 
-	const album = {
-		id: "11",
-		title: "Good Vibes",
-		by: "Spotify",
-		numberOfLikes: 3,
-		songs: [
-			{
-				id: Math.random(),
-				imageUri:
-					"https://cache.boston.com/resize/bonzai-fba/Globe_Photo/2011/04/14/1302796985_4480/539w.jpg",
-				title: "High on you",
-				artist: "Helen",
-			},
-			{
-				id: Math.random(),
-				imageUri:
-					"https://cache.boston.com/resize/bonzai-fba/Globe_Photo/2011/04/14/1302796985_4480/539w.jpg",
-				title: "Daunting tasks",
-				artist: "Helen",
-			},
-			{
-				id: Math.random(),
-				imageUri:
-					"https://cache.boston.com/resize/bonzai-fba/Globe_Photo/2011/04/14/1302796985_4480/539w.jpg",
-				title: "Believing whatever",
-				artist: "Helen",
-			},
-			{
-				id: Math.random(),
-				imageUri:
-					"https://cache.boston.com/resize/bonzai-fba/Globe_Photo/2011/04/14/1302796985_4480/539w.jpg",
-				title: "Lorem Ipsum",
-				artist: "Helen",
-			},
-		],
-	};
-
 	return (
 		<View>
-			<Text style={{ color: "white" }}>Hello from AlbumScreen</Text>
+			<FlatList
+				data={albumDetails.songs}
+				renderItem={({ item }) => <SongListItem song={item} />}
+				keyExtractor={(item) => item.id}
+			/>
 		</View>
 	);
 };
