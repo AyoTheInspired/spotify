@@ -7,7 +7,7 @@ type Props = {
 };
 
 const AlbumHeader = ({
-	album: { artistsHeadline, id, imageUri, name, by, numberOfLikes },
+	album: { imageUri, name, by, numberOfLikes },
 }: Props) => {
 	return (
 		<View style={styles.container}>
