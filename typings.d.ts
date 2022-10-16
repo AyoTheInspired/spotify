@@ -3,3 +3,7 @@ interface Album {
 	imageUri: string;
 	artistsHeadline: string;
 }
+
+interface HomeScreenParamsList {
+	HomeScreen: undefined;
+}

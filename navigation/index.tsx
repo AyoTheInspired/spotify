@@ -22,6 +22,7 @@ import { ColorSchemeName, Pressable } from "react-native";
 
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
+import AlbumScreen from "../screens/AlbumScreen";
 import HomeScreen from "../screens/HomeScreen";
 import ModalScreen from "../screens/ModalScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
@@ -48,10 +49,6 @@ export default function Navigation({
 	);
 }
 
-/**
- * A root stack navigator is often used for displaying modals on top of all other content.
- * https://reactnavigation.org/docs/modal
- */
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
@@ -74,10 +71,6 @@ function RootNavigator() {
 	);
 }
 
-/**
- * A bottom tab navigator displays tab buttons on the bottom of the display to switch screens.
- * https://reactnavigation.org/docs/bottom-tab-navigator
- */
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
 function BottomTabNavigator() {
@@ -91,7 +84,7 @@ function BottomTabNavigator() {
 			}}>
 			<BottomTab.Screen
 				name="Home"
-				component={HomeScreen}
+				component={HomeNavigator}
 				options={() => ({
 					title: "Home",
 					tabBarIcon: ({ color }) => (
@@ -99,6 +92,7 @@ function BottomTabNavigator() {
 					),
 				})}
 			/>
+
 			<BottomTab.Screen
 				name="Search"
 				component={TabTwoScreen}
@@ -114,6 +108,7 @@ function BottomTabNavigator() {
 					),
 				}}
 			/>
+
 			<BottomTab.Screen
 				name="Your Library"
 				component={TabTwoScreen}
@@ -129,6 +124,7 @@ function BottomTabNavigator() {
 					),
 				}}
 			/>
+
 			<BottomTab.Screen
 				name="Premium"
 				component={TabTwoScreen}
@@ -148,12 +144,25 @@ function BottomTabNavigator() {
 	);
 }
 
-/**
- * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
- */
-function TabBarIcon(props: {
-	name: React.ComponentProps<typeof FontAwesome>["name"];
-	color: string;
-}) {
-	return <FontAwesome size={30} style={{ marginBottom: -3 }} {...props} />;
+const TabOneStack = createNativeStackNavigator();
+
+function HomeNavigator() {
+	return (
+		<TabOneStack.Navigator>
+			<TabOneStack.Screen
+				name="HomeScreen"
+				component={HomeScreen}
+				options={{
+					headerShown: false,
+				}}
+			/>
+			<TabOneStack.Screen
+				name="AlbumScreen"
+				component={AlbumScreen}
+				options={{
+					headerShown: false,
+				}}
+			/>
+		</TabOneStack.Navigator>
+	);
 }
